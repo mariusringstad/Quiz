@@ -1,0 +1,60 @@
+What is the capital of France? 
+Madrid
+Paris
+Nice
+Boardoux
+B
+What is the capital of Italy?
+Milano
+Torino
+Rome
+Pisa
+C
+What is the capital of Spain?
+Madrid
+Barcelona
+Malaga
+Valencia
+A
+What is the capital of Germany?
+München
+Frankfurt
+Berlin
+Hannover
+C
+What is the capital of Norway?
+Stockholm
+Copenhagen
+Bergen
+Oslo
+D
+What is the capital of Mexico?
+New Mexico
+Tijuana
+Guadalajara
+Mexico City
+D
+What is the capital of Canada?
+Toronto
+Ottawa
+Montreal
+Vancouver
+B
+What is the capital of Russia?
+St.Petersburg
+Kazan
+Moscow
+Sochi
+C
+What is the capital of Brazil?
+Rio De Janeiro
+Brasilia
+São Paulo
+Salvador
+B
+What is the capital of Australia?
+Canberra
+Sydney
+Melbourne
+Brisbane
+A
