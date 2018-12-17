@@ -1,0 +1,73 @@
+from tkinter import Tk, Frame, Label, Button 
+from time import sleep
+
+class Question:
+    #Function that declares all essential variables
+    def __init__(self, question, answers, correctLetter):
+        self.question = question
+        self.answers = answers
+        self.correctLetter = correctLetter
+
+    #Function that check whether the answer is true or false.
+    def check(self, letter, view):
+        global right
+        if(letter == self.correctLetter):
+            label = Label(view, text="Right!")
+            right += 1
+        else:
+            label = Label(view, text="Wrong!")
+        label.pack()
+        #Will view the next question after 1 second.
+        view.after(1000, lambda *args: self.unpackView(view))
+
+    #Array that consists of the answers of the questions in the form of buttons. And views it in a window.
+    def getView(self, window):
+        view = Frame(window)
+        Label(view, text=self.question).pack()
+        Button(view, text=self.answers[0], command=lambda *args: self.check("A", view)).pack()
+        Button(view, text=self.answers[1], command=lambda *args: self.check("B", view)).pack()
+        Button(view, text=self.answers[2], command=lambda *args: self.check("C", view)).pack()
+        Button(view, text=self.answers[3], command=lambda *args: self.check("D", view)).pack()
+        return view
+
+    #Function that views the questions from the getView function and asks them. 
+    def unpackView(self, view):
+        view.pack_forget()
+        askQuestion()
+
+#Function that prints out the results/score of the quiz.
+def askQuestion():
+    global questions, window, index, button, right, number_of_questions 
+    if(len(questions) == index + 1):
+        Label(window, text="Thank you for answering the questions. " + str(right) + " of " + str(number_of_questions) + " questions answered right").pack()
+        return
+    button.pack_forget()
+    index += 1
+    questions[index].getView(window).pack()
+
+#Finds and opens the question.txt file which consists of all the questions, answer options and right answer. 
+questions = []
+file = open("questions.txt", "r")
+line = file.readline()
+while(line != ""):
+    questionString = line
+    answers = []
+    for i in range (4):
+        answers.append(file.readline())
+
+    #Prints out the questions and options in the questions.txt file.
+    correctLetter = file.readline()
+    correctLetter = correctLetter[:-1]
+    questions.append(Question(questionString, answers, correctLetter))
+    line = file.readline()
+file.close()
+index = -1
+right = 0
+number_of_questions = len(questions)
+
+#Opens the window of the game which consists of a start button and a gray background. 
+window = Tk()
+button = Button(window, text="Start", command=askQuestion)
+button.pack()
+window.configure(background='gray')
+window.mainloop()
